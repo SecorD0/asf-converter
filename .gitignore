@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# User files
+config/
+maFiles/
+accounts.txt
+sample_config.json
