@@ -118,25 +118,29 @@ docker run -it --rm -v $HOME/asf-converter/:/program --name asf-converter asf-co
 ```sh
 git clone https://github.com/SecorD0/asf-converter
 ```
-3. Set up an environment;
-4. Install requirements:
+3. Go to the repository:
+```sh
+cd asf-converter
+```
+4. Set up an environment;
+5. Install requirements:
 ```sh
 pip install -r requirements.txt
 ```
-5. Run the `app.py` the first time to create necessary files;
-6. Insert account logins and passwords in one of the following formats into the `accounts.txt` file:
+6. Run the `app.py` the first time to create necessary files;
+7. Insert account logins and passwords in one of the following formats into the `accounts.txt` file:
 ```
 login_TAB  password
 login2;password
 ```
-7. Copy the maFiles to the `maFiles` directory, among which the program will search for those that belong to the specified ones;
-8. Run the program;
-9. You can see the following account statuses:
+8. Copy the maFiles to the `maFiles` directory, among which the program will search for those that belong to the specified ones;
+9. Run the program;
+10. You can see the following account statuses:
    - `[V]` — a config was created and maFile was found;
    - `[X]` — a config was created, but maFile wasn't found;
    - `[!]` — something went wrong that caused the config not to be created.
-10. Copy the `config` directory to ASF directory;
-11. Run the ASF.
+11. Copy the `config` directory to ASF directory;
+12. Run the ASF.
 
 ⠀If you want to build the EXE file by yourself, use the command:
 ```sh
