@@ -6,19 +6,20 @@
 
 <h1><p align="center">Content</p></h1>
 
-- [Short description](#Short-description)
+- [Description](#Short-description)
 - [Useful links](#Useful-links)
 - [File structure](#File-structure)
 - [How to run](#How-to-run)
     - [Windows](#Windows)
-    - [Docker](#Docker)
+    - [Docker (building)](#Docker-building)
+    - [Docker (image)](#Docker-image)
     - [Source code](#Source-code)
 - [Report a bug or suggest an idea](#Report-a-bug-or-suggest-an-idea)
 - [Express your gratitude](#Express-your-gratitude)
 
 
 
-<h1><p align="center">Short description</p></h1>
+<h1><p align="center">Description</p></h1>
 <p align="right"><a href="#Content">To the content</a></p>
 
 ⠀This program allows you to create ASF configs according to a configured sample for the specified accounts.
@@ -51,28 +52,56 @@
 <h1><p align="center">How to run</p></h1>
 <p align="right"><a href="#Content">To the content</a></p>
 
+
 <h2><p align="center">Windows</p></h2>
 
-1. Download an EXE file from the [releases page](https://github.com/SecorD0/asf-converter/releases);
-2. Create a folder and put the EXE file in it;
-3. Run the program the first time to create necessary files;
+1. Download an EXE file from the [releases page](https://github.com/SecorD0/asf-converter/releases).
+2. Create a folder and put the EXE file in it.
+3. Run the program the first time to create necessary files.
 4. Insert account logins and passwords in one of the following formats into the `accounts.txt` file:
 ```
 login_TAB  password
 login2;password
 ```
-5. Copy the maFiles to the `maFiles` directory, among which the program will search for those that belong to the specified ones;
-6. Run the program;
+5. Copy the maFiles to the `maFiles` directory, among which the program will search for those that belong to the specified ones.
+6. Run the program.
 7. You can see the following account statuses:
    - `[V]` — a config was created and maFile was found;
    - `[X]` — a config was created, but maFile wasn't found;
    - `[!]` — something went wrong that caused the config not to be created.
-8. Copy the `config` directory to ASF directory;
+8. Copy the `config` directory to ASF directory.
 9. Run the ASF.
 
 
+<h2><p align="center">Docker (image)</p></h2>
 
-<h2><p align="center">Docker</p></h2>
+1. Install Docker, in Ubuntu you can use the command:
+```sh
+. <(wget -qO- https://raw.githubusercontent.com/SecorD0/utils/main/installers/docker.sh)
+```
+2. Run the program the first time to create necessary files:
+```sh
+docker run -it --rm -v $HOME/asf-converter/files:/program/files --name asf-converter ghcr.io/secord0/asf-converter:main
+```
+3. Insert account logins and passwords in one of the following formats into the `accounts.txt` file:
+```
+login_TAB  password
+login2;password
+```
+4. Copy the maFiles to the `maFiles` directory, among which the program will search for those that belong to the specified ones.
+5. Run the program:
+```sh
+docker run -it --rm -v $HOME/asf-converter/files:/program/files --name asf-converter ghcr.io/secord0/asf-converter:main
+```
+6. You can see the following account statuses:
+   - `[V]` — a config was created and maFile was found;
+   - `[X]` — a config was created, but maFile wasn't found;
+   - `[!]` — something went wrong that caused the config not to be created.
+7. Copy the `config` directory to ASF directory.
+8. Run the ASF.
+
+
+<h2><p align="center">Docker (building)</p></h2>
 
 1. Install Docker, in Ubuntu you can use the command:
 ```sh
@@ -80,7 +109,7 @@ login2;password
 ```
 2. Clone the repository:
 ```sh
-cd; git clone https://github.com/SecorD0/asf-converter
+git clone https://github.com/SecorD0/asf-converter
 ```
 3. Go to the repository:
 ```sh
@@ -99,7 +128,7 @@ docker run -it --rm -v $HOME/asf-converter/:/program --name asf-converter asf-co
 login_TAB  password
 login2;password
 ```
-7. Copy the maFiles to the `maFiles` directory, among which the program will search for those that belong to the specified ones;
+7. Copy the maFiles to the `maFiles` directory, among which the program will search for those that belong to the specified ones.
 8. Run the program:
 ```sh
 docker run -it --rm -v $HOME/asf-converter/:/program --name asf-converter asf-converter
@@ -108,12 +137,13 @@ docker run -it --rm -v $HOME/asf-converter/:/program --name asf-converter asf-co
    - `[V]` — a config was created and maFile was found;
    - `[X]` — a config was created, but maFile wasn't found;
    - `[!]` — something went wrong that caused the config not to be created.
-10. Copy the `config` directory to ASF directory;
+10. Copy the `config` directory to ASF directory.
 11. Run the ASF.
+
 
 <h2><p align="center">Source code</p></h2>
 
-1. Install [Python](https://www.python.org/downloads/);
+1. Install [Python 3.8](https://www.python.org/downloads/).
 2. Clone the repository:
 ```sh
 git clone https://github.com/SecorD0/asf-converter
@@ -122,27 +152,32 @@ git clone https://github.com/SecorD0/asf-converter
 ```sh
 cd asf-converter
 ```
-4. Set up an environment;
+4. Set up an environment.
 5. Install requirements:
 ```sh
 pip install -r requirements.txt
 ```
-6. Run the `app.py` the first time to create necessary files;
+6. Run the `app.py` the first time to create necessary files.
 7. Insert account logins and passwords in one of the following formats into the `accounts.txt` file:
 ```
 login_TAB  password
 login2;password
 ```
-8. Copy the maFiles to the `maFiles` directory, among which the program will search for those that belong to the specified ones;
-9. Run the program;
+8. Copy the maFiles to the `maFiles` directory, among which the program will search for those that belong to the specified ones.
+9. Run the program.
 10. You can see the following account statuses:
    - `[V]` — a config was created and maFile was found;
    - `[X]` — a config was created, but maFile wasn't found;
    - `[!]` — something went wrong that caused the config not to be created.
-11. Copy the `config` directory to ASF directory;
+11. Copy the `config` directory to ASF directory.
 12. Run the ASF.
 
-⠀If you want to build the EXE file by yourself, use the command:
+⠀If you want to build the EXE file by yourself:
+- Install `pyinstaller`:
+```sh
+pip install pyinstaller
+```
+- Build the EXE file:
 ```sh
 pyinstaller app.py -Fn asf-converter -i images/icons/app.ico --add-binary "images/icons;images/icons"
 ```
@@ -160,7 +195,7 @@ pyinstaller app.py -Fn asf-converter -i images/icons/app.ico --add-binary "image
 <p align="right"><a href="#Content">To the content</a></p>
 
 ⠀You can express your gratitude to the developer by sending fund to crypto wallets!
-- Ethereum-like address (Ethereum, BSC, Moonbeam, etc.): `0x900649087b8D7b9f799F880427DacCF2286D8F20`
+- Address of EVM networks (Ethereum, Polygon, BSC, etc.): `0x900649087b8D7b9f799F880427DacCF2286D8F20`
 - USDT TRC-20: `TNpBdjcmR5KzMVCBJTRYMJp16gCkQHu84K`
 - SOL: `DoZpXzGj5rEZVhEVzYdtwpzbXR8ifk5bajHybAmZvR4H`
 - BTC: `bc1qs4a0c3fntlhzn9j297qdsh3splcju54xscjstc`
