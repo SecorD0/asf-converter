@@ -7,11 +7,13 @@ if getattr(sys, 'frozen', False):
 else:
     ROOT_DIR = Path(__file__).parent.parent.absolute()
 
-CONFIG_DIR = os.path.join(ROOT_DIR, 'config')
-MAFILES_DIR = os.path.join(ROOT_DIR, 'maFiles')
+FILES_DIR = os.path.join(ROOT_DIR, 'files')
 
-LOG_FILE = os.path.join(ROOT_DIR, 'log.log')
-ERRORS_FILE = os.path.join(ROOT_DIR, 'errors.log')
+CONFIG_DIR = os.path.join(FILES_DIR, 'config')
+MAFILES_DIR = os.path.join(FILES_DIR, 'maFiles')
 
-ACCOUNTS_FILE = os.path.join(ROOT_DIR, 'accounts.txt')
-SAMPLE_CONFIG_FILE = os.path.join(ROOT_DIR, 'sample_config.json')
+LOG_FILE = os.path.join(FILES_DIR, 'log.log')
+ERRORS_FILE = os.path.join(FILES_DIR, 'errors.log')
+
+ACCOUNTS_FILE = os.path.join(FILES_DIR, 'accounts.txt')
+SAMPLE_CONFIG_FILE = os.path.join(FILES_DIR, 'sample_config.json')

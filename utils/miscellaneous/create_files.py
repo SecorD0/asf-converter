@@ -6,6 +6,7 @@ from data import config
 
 
 def create_files() -> None:
+    touch(config.FILES_DIR)
     touch(config.MAFILES_DIR)
     touch(config.CONFIG_DIR)
     touch(config.LOG_FILE, True)

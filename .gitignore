@@ -129,7 +129,4 @@ dmypy.json
 .pyre/
 
 # User files
-config/
-maFiles/
-accounts.txt
-sample_config.json
+files/

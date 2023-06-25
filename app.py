@@ -9,7 +9,7 @@ from utils.miscellaneous.print_to_log import print_to_log
 
 if __name__ == '__main__':
     try:
-        accounts = read_lines('accounts.txt', True)
+        accounts = read_lines(path=config.ACCOUNTS_FILE, skip_empty_rows=True)
         created = 0
         with_mafiles = 0
         for i, account in enumerate(accounts):
