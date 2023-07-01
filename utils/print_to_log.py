@@ -1,10 +1,12 @@
-from data.config import LOG_FILE
+from typing import Optional, Any
+
+from data import config
 
 
-def print_to_log(text: str) -> None:
-    print(text)
+def print_to_log(text: Any, color: Optional[str] = '') -> None:
+    print(color + text + config.RESET_ALL)
     try:
-        with open(LOG_FILE, 'a') as file:
+        with open(file=config.LOG_FILE, mode='a', encoding='utf-8') as file:
             file.write(text + '\n')
 
     except:

@@ -67,8 +67,8 @@ login2;password
 6. Run the program.
 7. You can see the following account statuses:
    - `[V]` — a config was created and maFile was found;
-   - `[X]` — a config was created, but maFile wasn't found;
-   - `[!]` — something went wrong that caused the config not to be created.
+   - `[!]` — a config was created, but maFile wasn't found;
+   - `[X]` — something went wrong that caused the config not to be created.
 8. Copy the `config` directory to ASF directory.
 9. Run the ASF.
 
@@ -95,8 +95,8 @@ docker run -it --rm -v $HOME/asf-converter/files:/program/files --name asf-conve
 ```
 6. You can see the following account statuses:
    - `[V]` — a config was created and maFile was found;
-   - `[X]` — a config was created, but maFile wasn't found;
-   - `[!]` — something went wrong that caused the config not to be created.
+   - `[!]` — a config was created, but maFile wasn't found;
+   - `[X]` — something went wrong that caused the config not to be created.
 7. Copy the `config` directory to ASF directory.
 8. Run the ASF.
 
@@ -135,8 +135,8 @@ docker run -it --rm -v $HOME/asf-converter/:/program --name asf-converter asf-co
 ```
 9. You can see the following account statuses:
    - `[V]` — a config was created and maFile was found;
-   - `[X]` — a config was created, but maFile wasn't found;
-   - `[!]` — something went wrong that caused the config not to be created.
+   - `[!]` — a config was created, but maFile wasn't found;
+   - `[X]` — something went wrong that caused the config not to be created.
 10. Copy the `config` directory to ASF directory.
 11. Run the ASF.
 
@@ -167,8 +167,8 @@ login2;password
 9. Run the program.
 10. You can see the following account statuses:
    - `[V]` — a config was created and maFile was found;
-   - `[X]` — a config was created, but maFile wasn't found;
-   - `[!]` — something went wrong that caused the config not to be created.
+   - `[!]` — a config was created, but maFile wasn't found;
+   - `[X]` — something went wrong that caused the config not to be created.
 11. Copy the `config` directory to ASF directory.
 12. Run the ASF.
 

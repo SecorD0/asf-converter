@@ -15,12 +15,13 @@ if __name__ == '__main__':
         mafiles = get_mafiles_dict()
         for i, account in enumerate(accounts):
             login = account
-            status = '[!]'
+            status = '[X]'
+            color = config.RED
             try:
-                status = '[X]'
                 sample_config = read_json(config.SAMPLE_CONFIG_FILE)
                 if ';' in account:
                     account = account.split(';')
+
                 else:
                     account = account.split('\t')
 
@@ -35,27 +36,29 @@ if __name__ == '__main__':
                     if login in mafiles:
                         os.replace(mafiles[login], join_path((config.CONFIG_DIR, f'{login}.maFile')))
                         status = '[V]'
+                        color = config.GREEN
                         with_mafiles += 1
+
+                    else:
+                        status = '[!]'
+                        color = config.LIGHTYELLOW_EX
 
                     write_json(path=join_path((config.CONFIG_DIR, f'{login}.json')), obj=sample_config, indent=2)
                     created += 1
-
-                else:
-                    status = '[!]'
 
             except:
                 logging.exception(f'account | {login}')
 
             finally:
-                print_to_log(f'{status} {i + 1}/{len(accounts)} | {login}')
+                print_to_log(text=f'{status} {i + 1}/{len(accounts)} | {login}', color=color)
 
         print(f'''
-Total accounts: {len(accounts)}
-Created configs: {created}
-Accounts with maFiles: {with_mafiles}''')
+Total accounts: {config.LIGHTGREEN_EX}{len(accounts)}{config.RESET_ALL}
+Created configs: {config.LIGHTGREEN_EX}{created}{config.RESET_ALL}
+Accounts with maFiles: {config.LIGHTGREEN_EX}{with_mafiles}{config.RESET_ALL}''')
 
     except:
         logging.exception('main')
 
     finally:
-        input('\nPress Enter to exit.\n')
+        input(f'\nPress {config.LIGHTGREEN_EX}Enter{config.RESET_ALL} to exit.\n')
