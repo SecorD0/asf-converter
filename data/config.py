@@ -8,7 +8,6 @@ else:
     ROOT_DIR = Path(__file__).parent.parent.absolute()
 
 FILES_DIR = os.path.join(ROOT_DIR, 'files')
-
 CONFIG_DIR = os.path.join(FILES_DIR, 'config')
 MAFILES_DIR = os.path.join(FILES_DIR, 'maFiles')
 

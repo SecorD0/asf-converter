@@ -1,17 +1,18 @@
-import glob
 import logging
 import os
 
 from pretty_utils.miscellaneous.files import read_json, write_json, read_lines, join_path
 
 from data import config
-from utils.miscellaneous.print_to_log import print_to_log
+from utils.get_mafiles_dict import get_mafiles_dict
+from utils.print_to_log import print_to_log
 
 if __name__ == '__main__':
     try:
-        accounts = read_lines(path=config.ACCOUNTS_FILE, skip_empty_rows=True)
         created = 0
         with_mafiles = 0
+        accounts = read_lines(path=config.ACCOUNTS_FILE, skip_empty_rows=True)
+        mafiles = get_mafiles_dict()
         for i, account in enumerate(accounts):
             login = account
             status = '[!]'
@@ -31,16 +32,10 @@ if __name__ == '__main__':
                     if 'https://steamcommunity.com/' in sample_config['SteamTradeToken']:
                         sample_config['SteamTradeToken'] = sample_config['SteamTradeToken'].split('token=')[1]
 
-                    for file in glob.glob(join_path((config.MAFILES_DIR, '*.maFile'))):
-                        try:
-                            content = read_json(file)
-                            if content['account_name'] == login:
-                                os.replace(file, join_path((config.CONFIG_DIR, f'{login}.maFile')))
-                                status = '[V]'
-                                with_mafiles += 1
-                                break
-                        except:
-                            pass
+                    if login in mafiles:
+                        os.replace(mafiles[login], join_path((config.CONFIG_DIR, f'{login}.maFile')))
+                        status = '[V]'
+                        with_mafiles += 1
 
                     write_json(path=join_path((config.CONFIG_DIR, f'{login}.json')), obj=sample_config, indent=2)
                     created += 1
@@ -49,17 +44,18 @@ if __name__ == '__main__':
                     status = '[!]'
 
             except:
-                pass
+                logging.exception(f'account | {login}')
 
             finally:
                 print_to_log(f'{status} {i + 1}/{len(accounts)} | {login}')
 
-        print(f'\nTotal accounts: {len(accounts)}'
-              f'\nCreated configs: {created}'
-              f'\nAccounts with maFiles: {with_mafiles}')
+        print(f'''
+Total accounts: {len(accounts)}
+Created configs: {created}
+Accounts with maFiles: {with_mafiles}''')
 
     except:
-        logging.exception('script')
+        logging.exception('main')
 
     finally:
         input('\nPress Enter to exit.\n')
