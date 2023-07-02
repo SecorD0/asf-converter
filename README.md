@@ -1,4 +1,4 @@
-<h1><p align="center">ASF converter</p></h1>
+<h1><p align="center">asf-converter</p></h1>
 
 <p align="center"><img src="images/icons/app.ico" width="400"></p>
 
@@ -6,7 +6,7 @@
 
 <h1><p align="center">Content</p></h1>
 
-- [Description](#Short-description)
+- [Description](#Description)
 - [Useful links](#Useful-links)
 - [File structure](#File-structure)
 - [How to run](#How-to-run)
@@ -14,6 +14,12 @@
     - [Docker (building)](#Docker-building)
     - [Docker (image)](#Docker-image)
     - [Source code](#Source-code)
+- [Updating](#Updating)
+  - [Windows](#Windows-1)
+  - [GitHub image](#GitHub-image)
+  - [Self-built image](#Self-built-image)
+  - [Source code](#Source-code-1)
+- [Useful commands](#Useful-commands)
 - [Report a bug or suggest an idea](#Report-a-bug-or-suggest-an-idea)
 - [Express your gratitude](#Express-your-gratitude)
 
@@ -29,7 +35,7 @@
 <h1><p align="center">Useful links</p></h1>
 <p align="right"><a href="#Content">To the content</a></p>
 
-⠀[ASF converter](https://github.com/SecorD0/asf-converter)
+⠀[asf-converter](https://github.com/SecorD0/asf-converter)
 
 ⠀[ASF official repository](https://github.com/JustArchiNET/ArchiSteamFarm)
 
@@ -39,13 +45,14 @@
 <p align="right"><a href="#Content">To the content</a></p>
 
 ⠀The program use the following files and directories:
-- `config` — a directory with ready configs and found maFiles, which you can put in the ASF;
-- `maFiles` — a directory with maFiles from accounts;
-- `accounts.txt` — a text file with logins and passwords to be processed;
-- `asf-converter.exe` / `app.py` — an executable file that runs the program;
-- `errors.log` — a log file with errors that occurred during the work;
-- `log.log` — a log file with the history of processed accounts;
-- `sample_config.json` — the sample config you set up, which will be applied when the program runs.
+- `files` — a user files directory:
+  - `config` — a directory with ready configs and found maFiles, which you can put in the ASF;
+  - `maFiles` — a directory with maFiles from accounts;
+  - `accounts.txt` — a text file with logins and passwords to be processed;
+  - `errors.log` — a log file with errors that occurred during the work;
+  - `log.log` — a log file with the history of the program working;
+  - `sample_config.json` — the sample config you set up, which will be applied when the program runs.
+- `asf-converter.exe` / `app.py` — an executable file that runs the program.
 
 
 
@@ -69,7 +76,7 @@ login2;password
    - `[V]` — a config was created and maFile was found;
    - `[!]` — a config was created, but maFile wasn't found;
    - `[X]` — something went wrong that caused the config not to be created.
-8. Copy the `config` directory to ASF directory.
+8. Copy the `config` directory to the ASF directory.
 9. Run the ASF.
 
 
@@ -97,7 +104,7 @@ docker run -it --rm -v $HOME/asf-converter/files:/program/files --name asf-conve
    - `[V]` — a config was created and maFile was found;
    - `[!]` — a config was created, but maFile wasn't found;
    - `[X]` — something went wrong that caused the config not to be created.
-7. Copy the `config` directory to ASF directory.
+7. Copy the `config` directory to the ASF directory.
 8. Run the ASF.
 
 
@@ -137,7 +144,7 @@ docker run -it --rm -v $HOME/asf-converter/:/program --name asf-converter asf-co
    - `[V]` — a config was created and maFile was found;
    - `[!]` — a config was created, but maFile wasn't found;
    - `[X]` — something went wrong that caused the config not to be created.
-10. Copy the `config` directory to ASF directory.
+10. Copy the `config` directory to the ASF directory.
 11. Run the ASF.
 
 
@@ -169,8 +176,9 @@ login2;password
    - `[V]` — a config was created and maFile was found;
    - `[!]` — a config was created, but maFile wasn't found;
    - `[X]` — something went wrong that caused the config not to be created.
-11. Copy the `config` directory to ASF directory.
+11. Copy the `config` directory to the ASF directory.
 12. Run the ASF.
+
 
 ⠀If you want to build the EXE file by yourself:
 - Install `pyinstaller`:
@@ -180,6 +188,80 @@ pip install pyinstaller
 - Build the EXE file:
 ```sh
 pyinstaller app.py -Fn asf-converter -i images/icons/app.ico --add-binary "images/icons;images/icons"
+```
+
+
+
+<h1><p align="center">Updating</p></h1>
+<p align="right"><a href="#Content">To the content</a></p>
+
+
+<h2><p align="center">Windows</p></h2>
+
+1. Download an EXE file from the [releases page](https://github.com/SecorD0/asf-converter/releases)
+
+
+<h2><p align="center">GitHub image</p></h2>
+
+1. Stop the container:
+```sh
+docker stop asf-converter
+```
+2. Remove the container:
+```sh
+docker rm asf-converter
+```
+3. Update the image:
+```sh
+docker pull ghcr.io/secord0/asf-converter:main
+```
+
+
+<h2><p align="center">Self-built image</p></h2>
+
+1. Stop the container:
+```sh
+docker stop asf-converter
+```
+2. Remove the container:
+```sh
+docker rm asf-converter
+```
+3. Update the local files:
+```sh
+git pull
+```
+4. Rebuild the image:
+```sh
+docker build -t asf-converter .
+```
+
+
+<h2><p align="center">Source code</p></h2>
+
+1. Update the local files:
+```sh
+git pull
+```
+
+
+
+<h1><p align="center">Useful commands</p></h1>
+<p align="right"><a href="#Content">To the content</a></p>
+
+⠀To run the program (GitHub image):
+```sh
+docker run -it --rm -v $HOME/asf-converter/files:/program/files --name asf-converter ghcr.io/secord0/asf-converter:main
+```
+
+⠀To run the program (self-built image):
+```sh
+docker run -it --rm -v $HOME/asf-converter/:/program --name asf-converter asf-converter
+```
+
+⠀To remove the container:
+```sh
+docker stop asf-converter; docker rm asf-converter
 ```
 
 
