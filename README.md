@@ -11,8 +11,8 @@
 - [File structure](#File-structure)
 - [How to run](#How-to-run)
     - [Windows](#Windows)
-    - [Docker (building)](#Docker-building)
     - [Docker (image)](#Docker-image)
+    - [Docker (building)](#Docker-building)
     - [Source code](#Source-code)
 - [Updating](#Updating)
   - [Windows](#Windows-1)
@@ -28,7 +28,7 @@
 <h1><p align="center">Description</p></h1>
 <p align="right"><a href="#Content">To the content</a></p>
 
-⠀This program allows you to create ASF configs according to a configured sample for the specified accounts.
+⠀The program allows you to create ASF configs according to a configured sample for the specified accounts.
 
 
 

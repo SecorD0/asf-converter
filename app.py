@@ -4,7 +4,7 @@ import os
 from pretty_utils.miscellaneous.files import read_json, write_json, read_lines, join_path
 
 from data import config
-from utils.get_mafiles_dict import get_mafiles_dict
+from utils.get_mafile_dict import get_mafile_dict
 from utils.print_to_log import print_to_log
 
 if __name__ == '__main__':
@@ -12,7 +12,7 @@ if __name__ == '__main__':
         created = 0
         with_mafiles = 0
         accounts = read_lines(path=config.ACCOUNTS_FILE, skip_empty_rows=True)
-        mafiles = get_mafiles_dict()
+        mafiles = get_mafile_dict()
         for i, account in enumerate(accounts):
             login = account
             status = '[X]'
