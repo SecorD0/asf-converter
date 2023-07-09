@@ -10,14 +10,16 @@
 - [Useful links](#Useful-links)
 - [File structure](#File-structure)
 - [How to run](#How-to-run)
-    - [Windows](#Windows)
-    - [Docker (image)](#Docker-image)
-    - [Docker (building)](#Docker-building)
-    - [Source code](#Source-code)
+  - [Windows](#Windows)
+  - [Docker (image)](#Docker-image)
+  - [Docker (building)](#Docker-building)
+  - [Source code](#Source-code)
 - [Updating](#Updating)
   - [Windows](#Windows-1)
   - [GitHub image](#GitHub-image)
   - [Self-built image](#Self-built-image)
+    - [General](#General)
+    - [Breaking](#Breaking)
   - [Source code](#Source-code-1)
 - [Useful commands](#Useful-commands)
 - [Report a bug or suggest an idea](#Report-a-bug-or-suggest-an-idea)
@@ -96,7 +98,7 @@ login_TAB  password
 login2;password
 ```
 4. Copy the maFiles to the `maFiles` directory, among which the program will search for those that belong to the specified ones.
-5. Run the program:
+5. Run the program again:
 ```sh
 docker run -it --rm -v $HOME/asf-converter/files:/program/files --name asf-converter ghcr.io/secord0/asf-converter:main
 ```
@@ -136,7 +138,7 @@ login_TAB  password
 login2;password
 ```
 7. Copy the maFiles to the `maFiles` directory, among which the program will search for those that belong to the specified ones.
-8. Run the program:
+8. Run the program again:
 ```sh
 docker run -it --rm -v $HOME/asf-converter/:/program --name asf-converter asf-converter
 ```
@@ -171,7 +173,7 @@ login_TAB  password
 login2;password
 ```
 8. Copy the maFiles to the `maFiles` directory, among which the program will search for those that belong to the specified ones.
-9. Run the program.
+9. Run the `app.py` again.
 10. You can see the following account statuses:
    - `[V]` — a config was created and maFile was found;
    - `[!]` — a config was created, but maFile wasn't found;
@@ -198,7 +200,8 @@ pyinstaller app.py -Fn asf-converter -i images/icons/app.ico --add-binary "image
 
 <h2><p align="center">Windows</p></h2>
 
-1. Download an EXE file from the [releases page](https://github.com/SecorD0/asf-converter/releases)
+1. Download an EXE file of the new version from the [releases page](https://github.com/SecorD0/asf-converter/releases) and replace the old one with it.
+2. Run the EXE file of the new version.
 
 
 <h2><p align="center">GitHub image</p></h2>
@@ -215,9 +218,32 @@ docker rm asf-converter
 ```sh
 docker pull ghcr.io/secord0/asf-converter:main
 ```
+4. Run the program:
+```sh
+docker run -it --rm -v $HOME/asf-converter/files:/program/files --name asf-converter ghcr.io/secord0/asf-converter:main
+```
 
 
 <h2><p align="center">Self-built image</p></h2>
+
+<h3><p align="center">General</p></h3>
+
+1. Go to the repository:
+```sh
+cd asf-converter
+```
+2. Update the local files:
+```sh
+git pull
+```
+3. Run the program:
+```sh
+docker run -it --rm -v $HOME/asf-converter/:/program --name asf-converter asf-converter
+```
+
+<h3><p align="center">Breaking</p></h3>
+
+⠀In addition to the general steps, follow the steps below if the software developer has notified that changes have been made to the project libraries.
 
 1. Stop the container:
 ```sh
@@ -227,22 +253,35 @@ docker stop asf-converter
 ```sh
 docker rm asf-converter
 ```
-3. Update the local files:
+3. Go to the repository:
+```sh
+cd asf-converter
+```
+4. Update the local files:
 ```sh
 git pull
 ```
-4. Rebuild the image:
+5. Rebuild the image:
 ```sh
 docker build -t asf-converter .
+```
+6. Run the program:
+```sh
+docker run -it --rm -v $HOME/asf-converter/:/program --name asf-converter asf-converter
 ```
 
 
 <h2><p align="center">Source code</p></h2>
 
-1. Update the local files:
+1. Go to the repository:
+```sh
+cd asf-converter
+```
+2. Update the local files:
 ```sh
 git pull
 ```
+3. Run the `app.py`.
 
 
 
